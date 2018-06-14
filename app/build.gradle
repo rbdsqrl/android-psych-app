@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.rbdsqrl.mindsafe"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -42,4 +42,6 @@ dependencies {
     implementation 'androidx.room:room-rxjava2:2.0.0-alpha1'
     // ReactiveStreams support for LiveData
     implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.0.0-alpha1'
+    // GSON
+    implementation 'com.google.code.gson:gson:2.8.2'
 }

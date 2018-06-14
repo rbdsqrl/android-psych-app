@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="dialog" type="com.rbdsqrl.mindsafe.view.AddEventDialog"/>
+    </data>
+    <androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:paddingStart="@dimen/layout_root_padding"
+        android:paddingEnd="@dimen/layout_root_padding"
+        android:paddingTop="@dimen/layout_root_padding"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/etEventName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="@string/hint_event_name"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="@dimen/text_large"
+            app:layout_constraintBottom_toTopOf="@id/etEventDesc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etEventDesc"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="text"
+            android:layout_marginTop="@dimen/layout_root_padding"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/hint_event_desc"
+            android:imeOptions="actionDone"
+            android:textSize="@dimen/text_large"
+            app:layout_constraintBottom_toTopOf="@id/btnAddEvent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEventName" />
+       <!-- TODO MOOD SELECTION
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></LinearLayout>-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddEvent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_add_event"
+            android:textSize="@dimen/text_medium"
+            android:textAllCaps="false"
+            android:textAppearance="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> dialog.addEvent()}"
+            style="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.ConstraintLayout>
+</layout>

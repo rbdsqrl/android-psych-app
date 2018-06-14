@@ -1,33 +1,29 @@
-package com.rbdsqrl.mindsafe;
+package com.rbdsqrl.mindsafe.view;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.rbdsqrl.mindsafe.R;
 import com.rbdsqrl.mindsafe.databinding.ActivityHomeBinding;
-import com.rbdsqrl.mindsafe.view.DiaryFragment;
-import com.rbdsqrl.mindsafe.view.OverviewFragment;
-import com.rbdsqrl.mindsafe.view.ProfileFragment;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.view.MenuItem;
-
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     FragmentManager fragmentManager;
+    ActivityHomeBinding homeBinding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        ActivityHomeBinding homeBinding = DataBindingUtil.setContentView(this,
-                R.layout.activity_home);
+    public int getLayout() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    public void onLayoutReady() {
+        homeBinding = DataBindingUtil.setContentView(this, getLayout());
         fragmentManager = getSupportFragmentManager();
         setHomeScreen();
         homeBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -43,16 +39,19 @@ public class HomeActivity extends AppCompatActivity {
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment = null;
+            Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     fragment = new DiaryFragment();
                     break;
-                case R.id.navigation_profile:
-                    fragment = new ProfileFragment();
+                case R.id.navigation_stories:
+                    fragment = new StoriesFragment();
                     break;
-                case R.id.navigation_overview:
-                    fragment = new OverviewFragment();
+                case R.id.navigation_timeline:
+                    fragment = new TimelineFragment();
+                    break;
+                case R.id.navigation_more:
+                    fragment = new MoreFragment();
                     break;
                 default:
                     return false;
@@ -61,5 +60,4 @@ public class HomeActivity extends AppCompatActivity {
             return true;
         }
     };
-
 }
