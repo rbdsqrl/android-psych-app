@@ -5,6 +5,7 @@ public class Event {
     private String eventDesc;
     private String afterEventMood;
     private String beforeEventMood;
+    private String eventTime;
 
     public String getEventTitle() {
         return eventTitle;
@@ -38,10 +39,30 @@ public class Event {
         this.beforeEventMood = beforeEventMood;
     }
 
-    public Event(String eventTitle, String eventDesc, String afterEventMood, String beforeEventMood) {
+    public String getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public Event(String eventTitle, String eventDesc, String afterEventMood, String beforeEventMood, String eventTime) {
         this.eventTitle = eventTitle;
         this.eventDesc = eventDesc;
         this.afterEventMood = afterEventMood;
         this.beforeEventMood = beforeEventMood;
+        this.eventTime = eventTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventTitle='" + eventTitle + '\'' +
+                ", eventDesc='" + eventDesc + '\'' +
+                ", afterEventMood='" + afterEventMood + '\'' +
+                ", beforeEventMood='" + beforeEventMood + '\'' +
+                ", eventTime='" + eventTime + '\'' +
+                '}';
     }
 }

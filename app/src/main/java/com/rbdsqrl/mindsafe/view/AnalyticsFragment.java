@@ -6,12 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rbdsqrl.mindsafe.R;
-import com.rbdsqrl.mindsafe.databinding.FragmentStoriesBinding;
+import com.rbdsqrl.mindsafe.databinding.FragmentAnalyticsBinding;
 
 import androidx.databinding.DataBindingUtil;
 
-public class StoriesFragment extends BaseFragment {
-    FragmentStoriesBinding binding;
+public class AnalyticsFragment extends BaseFragment {
+    FragmentAnalyticsBinding binding;
     @Override
     public View bindFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(
@@ -26,6 +26,6 @@ public class StoriesFragment extends BaseFragment {
 
     @Override
     public int getLayout() {
-        return R.layout.fragment_stories;
+        return R.layout.fragment_analytics;
     }
 }

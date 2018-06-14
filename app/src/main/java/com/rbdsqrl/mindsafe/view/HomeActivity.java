@@ -45,7 +45,7 @@ public class HomeActivity extends BaseActivity {
                     fragment = new DiaryFragment();
                     break;
                 case R.id.navigation_stories:
-                    fragment = new StoriesFragment();
+                    fragment = new AnalyticsFragment();
                     break;
                 case R.id.navigation_timeline:
                     fragment = new TimelineFragment();

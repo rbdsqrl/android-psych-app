@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
     <data>
         <variable name="diaryPage" type="com.rbdsqrl.mindsafe.repo.DiaryPage"/>
-        <variable name="fragment" type="com.rbdsqrl.mindsafe.view.DiaryFragment"/>
+        <variable name="handler" type="com.rbdsqrl.mindsafe.handler.ClickHandler"/>
+        <variable name="viewModel" type="com.rbdsqrl.mindsafe.viewmodel.DiaryPageViewModel"/>
     </data>
 
     <androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:padding="@dimen/layout_root_padding"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,8 +24,10 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="@dimen/text_xlarge"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tv_date"
+            tools:text="DATE"
             android:textSize="@dimen/text_large"
             android:text="@{ diaryPage.diaryDate }"
             android:textColor="@color/colorPrimary"
@@ -38,11 +43,52 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_add_event"
-            android:onClick="@{() -> fragment.addNewEvent(diaryPage) }"
+            android:onClick="@{() -> handler.showAddEventDialog(viewModel, diaryPage) }"
             android:textSize="@dimen/text_medium"
             android:textAllCaps="false"
             android:textAppearance="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <LinearLayout
+            android:id="@+id/llEvents"
+            app:layout_constraintTop_toBottomOf="@id/btn_add_event"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.ConstraintLayout
+                android:id="@+id/clTitle"
+                android:onClick="@{() -> handler.animateArrow(ivArrow, rvEvents)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_2dp"
+                    android:layout_marginBottom="@dimen/margin_2dp"
+                    android:text="@string/title_events"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_medium" />
+                <ImageView
+                    android:id="@+id/ivArrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/ic_dropdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.constraintlayout.ConstraintLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEvents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
     </androidx.constraintlayout.ConstraintLayout>
 </layout>

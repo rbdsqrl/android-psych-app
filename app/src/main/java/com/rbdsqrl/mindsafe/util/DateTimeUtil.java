@@ -8,4 +8,9 @@ public class DateTimeUtil {
         SimpleDateFormat simpleDateFormat =   new SimpleDateFormat("dd MMM, yyyy");
         return simpleDateFormat.format(new Date(System.currentTimeMillis()));
     }
+
+    public static String getCurrentTimeFormatted(){
+        SimpleDateFormat simpleDateFormat =   new SimpleDateFormat("hh:mm a");
+        return simpleDateFormat.format(new Date(System.currentTimeMillis()));
+    }
 }

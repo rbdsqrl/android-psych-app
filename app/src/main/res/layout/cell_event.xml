@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="event" type="com.rbdsqrl.mindsafe.pojo.Event"/>
+    </data>
+    <androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_5dp"
+        android:layout_marginBottom="@dimen/margin_5dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivEventMood"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvEventName"
+            android:text="@{event.eventTitle}"
+            tools:text="@string/hint_event_name"
+            android:textSize="@dimen/text_medium"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivEventMood"/>
+        <TextView
+            tools:text="@string/event_time"
+            android:text="@{event.eventTime}"
+            android:textSize="@dimen/text_xsmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="@id/tvEventName"
+            app:layout_constraintBottom_toBottomOf="@id/ivEventMood"/>
+    </androidx.constraintlayout.ConstraintLayout>
+</layout>

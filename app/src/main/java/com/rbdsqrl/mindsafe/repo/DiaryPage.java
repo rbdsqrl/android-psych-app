@@ -115,4 +115,18 @@ public class DiaryPage {
         this.communicationQuotient = communicationQuotient;
         this.substanceUse = substanceUse;
     }
+
+    @Override
+    public String toString() {
+        return "DiaryPage{" +
+                "diaryDate='" + diaryDate + '\'' +
+                ", events=" + events.toString() +
+                ", moodQuotient='" + moodQuotient + '\'' +
+                ", appetiteQuotient='" + appetiteQuotient + '\'' +
+                ", eatingQuotient='" + eatingQuotient + '\'' +
+                ", socialQuotient='" + socialQuotient + '\'' +
+                ", communicationQuotient='" + communicationQuotient + '\'' +
+                ", substanceUse=" + substanceUse +
+                '}';
+    }
 }

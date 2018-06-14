@@ -2,11 +2,13 @@
     <string name="app_name">MindSafe</string>
     <string name="title_diary">Diary</string>
     <string name="title_profile">Profile</string>
-    <string name="title_topics">Stories</string>
+    <string name="title_analytics">Analytics</string>
     <string name="title_alerts">Timeline</string>
     <string name="btn_add_entry">Add Entry</string>
     <string name="title_more">More</string>
     <string name="btn_add_event">+ Add a new event</string>
     <string name="hint_event_name">Name of the event</string>
     <string name="hint_event_desc">Describe the event</string>
+    <string name="title_events">Events</string>
+    <string name="event_time">Event Time</string>
 </resources>
