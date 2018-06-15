@@ -1,20 +1,23 @@
 package com.rbdsqrl.mindsafe.util;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import androidx.databinding.BindingAdapter;
 
 public class ViewUtil {
     private static final String EMPTY_ALERT = "This field can't be empty";
 
-    public static boolean isEmptyText(TextView...textViews){
-        for(TextView t : textViews){
-            if(t.getText().toString().isEmpty()){
+    public static boolean isEmptyText(TextView... textViews) {
+        for (TextView t : textViews) {
+            if (t.getText().toString().isEmpty()) {
                 Log.i("view", "isEmpty");
                 t.setError(EMPTY_ALERT);
                 return true;
@@ -24,18 +27,25 @@ public class ViewUtil {
     }
 
     public static void setVisibility(int visibility, View... views) {
-        for(View view : views){
+        for (View view : views) {
             view.setVisibility(visibility);
         }
     }
 
-    public static void rotateView(float fromDegree, float toDegree, View v){
-        RotateAnimation rotateAnimation = new RotateAnimation(fromDegree, toDegree,Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF, 0.5f);
+    public static void rotateView(float fromDegree, float toDegree, View v) {
+        RotateAnimation rotateAnimation = new RotateAnimation(fromDegree, toDegree, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation.setInterpolator(new DecelerateInterpolator());
         rotateAnimation.setRepeatCount(0);
         rotateAnimation.setDuration(800L);
         rotateAnimation.setFillAfter(true);
         v.startAnimation(rotateAnimation);
+    }
+
+    @BindingAdapter("url")
+    public static void loadImage(ImageView view, String imageUrl) {
+        Picasso.get().load(imageUrl).into(view);
+        // .error(R.drawable.placeholder_nomoon)
+        // .placeholder(R.drawable.placeholder_nomoon)
     }
 
     /*public static void animateView(final View v, float distance, final int visibility){
@@ -51,5 +61,6 @@ public class ViewUtil {
                     }
                 });
     }*/
+
 
 }

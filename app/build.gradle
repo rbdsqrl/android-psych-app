@@ -20,6 +20,11 @@ android {
     dataBinding {
         enabled = true
     }
+    //TODO remove this and add deep linking
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        baseline file("lint-baseline.xml") // your choice of filename/path here
+    }
 }
 
 dependencies {
@@ -45,4 +50,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.0.0-alpha1'
     // GSON
     implementation 'com.google.code.gson:gson:2.8.2'
+    // Picasso TODO proguard okhttp
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.rbdsqrl.mindsafe.R;
 import com.rbdsqrl.mindsafe.databinding.FragmentDiaryBinding;
@@ -14,11 +15,13 @@ import com.rbdsqrl.mindsafe.repo.DiaryPage;
 import com.rbdsqrl.mindsafe.util.DateTimeUtil;
 import com.rbdsqrl.mindsafe.util.ViewUtil;
 import com.rbdsqrl.mindsafe.viewmodel.DiaryPageViewModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -68,10 +71,10 @@ public class DiaryFragment extends BaseFragment {
         if(diaryPage == null){
             diaryPage = MPage.createPage(diaryDate,new ArrayList<Event>(), null, null, null, null, null,DiaryPage.SubstanceUse.NONE);
             diaryPageViewModel.insert(diaryPage);
-            diaryPage = diaryPageViewModel.getPage(diaryDate);
+        }else {
+            binding.setDiaryPage(diaryPage);
+            setEvent(diaryPage.getEvents());
         }
-        binding.setDiaryPage(diaryPage);
-        setEvent(diaryPage.getEvents());
     }
 
     private void setEvent(List<Event> events) {
@@ -87,5 +90,4 @@ public class DiaryFragment extends BaseFragment {
     public int getLayout() {
         return R.layout.fragment_diary;
     }
-
 }
