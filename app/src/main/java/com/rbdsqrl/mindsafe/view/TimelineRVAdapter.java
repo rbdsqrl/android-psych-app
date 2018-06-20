@@ -1,6 +1,7 @@
 package com.rbdsqrl.mindsafe.view;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TimelineRVAdapter extends RecyclerView.Adapter {
 
     private List<DiaryPage> diaryPages;
+    PageListener listener;
 
     interface PageListener{
         void onPageSelected(DiaryPage diaryPage);
@@ -27,12 +29,13 @@ public class TimelineRVAdapter extends RecyclerView.Adapter {
         this.diaryPages = diaryPages;
     }
 
-    private TimelineRVAdapter(List<DiaryPage> diaryPages){
+    private TimelineRVAdapter(List<DiaryPage> diaryPages, PageListener listener){
         this.diaryPages = diaryPages;
+        this.listener = listener;
     }
 
-    public TimelineRVAdapter(){
-        this(new ArrayList<DiaryPage>());
+    public TimelineRVAdapter(PageListener listener){
+        this(new ArrayList<DiaryPage>(), listener);
     }
 
     @NonNull
@@ -62,9 +65,7 @@ public class TimelineRVAdapter extends RecyclerView.Adapter {
         }
 
         void bind(DiaryPage diaryPage){
-            if(diaryPage == null)
-                return;
-            binding.setDairyPage(diaryPage);
+            binding.setDiaryPage(diaryPage);
             binding.executePendingBindings();
         }
     }
