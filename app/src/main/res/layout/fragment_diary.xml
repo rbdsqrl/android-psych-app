@@ -24,12 +24,12 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="@dimen/text_xlarge"
             android:textStyle="bold" />
-
+       <!-- android:text="@{ viewModel.diaryPageLD.diaryDate }"-->
         <TextView
             android:id="@+id/tv_date"
             tools:text="DATE"
             android:textSize="@dimen/text_large"
-            android:text="@{ diaryPage.diaryDate }"
+            android:text="@{diaryPage.diaryDate}"
             android:textColor="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="@id/btn_add_event"
             app:layout_constraintBottom_toBottomOf="@id/btn_add_event"

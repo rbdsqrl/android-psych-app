@@ -15,8 +15,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(getLayout());
-        Log.i("baseActivity", "view set");
         context = this;
         onLayoutReady();
     }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.rbdsqrl.mindsafe.R;
 import com.rbdsqrl.mindsafe.databinding.FragmentDiaryBinding;
@@ -15,13 +14,11 @@ import com.rbdsqrl.mindsafe.repo.DiaryPage;
 import com.rbdsqrl.mindsafe.util.DateTimeUtil;
 import com.rbdsqrl.mindsafe.util.ViewUtil;
 import com.rbdsqrl.mindsafe.viewmodel.DiaryPageViewModel;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -46,8 +43,10 @@ public class DiaryFragment extends BaseFragment {
         ClickHandler handler =  new ClickHandler(this);
         diaryPageViewModel = ViewModelProviders.of(this).get(DiaryPageViewModel.class);
         //setting binding variables
+        //TODO binding.setLifecycleOwner(this);
         binding.setHandler(handler);
         binding.setViewModel(diaryPageViewModel);
+        binding.setLifecycleOwner(this);
         setRecyclerView();
         setObserver();
     }
@@ -59,7 +58,7 @@ public class DiaryFragment extends BaseFragment {
     }
 
     private void setObserver() {
-        diaryPageViewModel.getPageLD(diaryDate).observe(this, new Observer<DiaryPage>() {
+        diaryPageViewModel.getPageLiveData(diaryDate).observe(this, new Observer<DiaryPage>() {
             @Override
             public void onChanged(@Nullable DiaryPage diaryPage) {
                 loadDetails(diaryPage);

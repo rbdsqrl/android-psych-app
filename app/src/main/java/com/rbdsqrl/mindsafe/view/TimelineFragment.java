@@ -17,8 +17,7 @@ public class TimelineFragment extends BaseFragment {
 
     @Override
     public View bindFragmentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(
-                inflater, getLayout(), container,false);
+        binding = DataBindingUtil.inflate(inflater, getLayout(), container,false);
         return binding.getRoot();
     }
 

@@ -1,7 +1,6 @@
 package com.rbdsqrl.mindsafe.view;
 
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 

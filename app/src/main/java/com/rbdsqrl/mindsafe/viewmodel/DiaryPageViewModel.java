@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 public class DiaryPageViewModel extends BaseViewModel {
-    private DiaryPageRepository repository;
-    private LiveData<List<DiaryPage>> diaryLD;
-    private LiveData<DiaryPage> diaryPageLD;
+    public DiaryPageRepository repository;
+    public LiveData<List<DiaryPage>> diaryLiveData;
+    public LiveData<DiaryPage> pageLiveData;
 
     public DiaryPageViewModel(@NonNull Application application) {
         super(application);
@@ -41,21 +41,21 @@ public class DiaryPageViewModel extends BaseViewModel {
         return repository.getAll();
     }
 
-    public LiveData<List<DiaryPage>> getAllLD(){
-        if(diaryLD == null){
-            diaryLD = repository.getAllLD();
+    public LiveData<List<DiaryPage>> getDiaryLiveData(){
+        if(diaryLiveData == null){
+            diaryLiveData = repository.getAllLD();
         }
-        return diaryLD;
+        return diaryLiveData;
     }
 
     public DiaryPage getPage(String diaryDate){
         return repository.getPage(diaryDate);
     }
 
-    public LiveData<DiaryPage> getPageLD(String diaryDate){
-        if(diaryPageLD == null)
-            diaryPageLD = repository.getPageLD(diaryDate);
-        return diaryPageLD;
+    public LiveData<DiaryPage> getPageLiveData(String diaryDate){
+        if(pageLiveData == null)
+            pageLiveData = repository.getPageLD(diaryDate);
+        return pageLiveData;
     }
 
     public void addEvent(DiaryPage diaryPage, Event event){
